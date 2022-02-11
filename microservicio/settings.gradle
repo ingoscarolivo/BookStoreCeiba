@@ -1,4 +1,4 @@
-rootProject.name = 'stock'
+rootProject.name = 'ceibabookstore'
 
 include ':infraestructura'
 include ':aplicacion'

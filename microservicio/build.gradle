@@ -99,6 +99,6 @@ dependencies {
 
 bootJar {
 	mainClassName = 'com.ceiba.Application'
-    baseName = 'stock'
+    baseName = 'ceibabookstore'
     version =  version
 }

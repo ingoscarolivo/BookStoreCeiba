@@ -6,7 +6,7 @@ jasypt:
 server:
    port: 8083
    servlet:
-      context-path: /stock
+      context-path: /ceibabookstore
       session:
          timeout: 21600s
 
