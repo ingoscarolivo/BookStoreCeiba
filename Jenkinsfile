@@ -40,28 +40,37 @@ pipeline {
  stage('Compile & Unit Tests') {
         steps{
              echo "------------>compile & Unit Tests<------------"
-             sh 'chmod +x microservicio/gradlew'
-             sh 'microservicio/gradlew --b microservicio/build.gradle test'
+             	sh 'chmod +x ./microservicio/gradlew'
+             		sh './microservicio/gradlew --b ./microservicio/build.gradle clean'
+             		sh './microservicio/gradlew --b ./microservicio/build.gradle test'
         }
  }
 
 
 
-stage('Static Code Analysis') {
+/* stage('Static Code Analysis') {
     steps{
         	sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:ceibabookstore.oscar.olivo',
         sonarName:'CeibaADN-CeibaBookStore(oscar.olivo)',
         sonarPathProperties:'./sonar-project.properties')
     }
-}
+} */
 
+ stage('Static Code Analysis') {
+      steps{
+        echo '------------>Análisis de código estático<------------'
+        withSonarQubeEnv('Sonar') {
+sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=sonar-project.properties"
+        }
+      }
+    }
 
 
  stage('Build') {
      steps{
          echo "------------>Build<------------"
          //Construir sin tarea test que se ejecutó previamente
-         sh './gradlew --b ./build.gradle build -x test'
+         sh './microservicio/gradlew --b ./microservicio/build.gradle build -x test'
      }
  }
 
