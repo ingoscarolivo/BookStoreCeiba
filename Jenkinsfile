@@ -57,11 +57,14 @@ stage('Static Code Analysis') {
 
 
 
-    stage('Build') {
-      steps {
-        echo "------------>Build<------------"
-      }
-    }
+ stage('Build') {
+     steps{
+         echo "------------>Build<------------"
+         //Construir sin tarea test que se ejecutó previamente
+         sh './gradlew --b ./build.gradle build -x test'
+     }
+ }
+
   }
 
   post {
@@ -69,10 +72,12 @@ stage('Static Code Analysis') {
       echo 'This will always run'
     }
     success {
-      echo 'This will run only if successful'
+     echo 'This will run only if successful'
+     junit 'build/test-results/test/*.xml' //RUTA RELATIVA DE LOS ARCHIVOS .XML
     }
     failure {
-      echo 'This will run only if failed'
+     echo 'This will run only if failed'
+     mail (to: 'yuliana.canas@ceiba.com.co',subject: "Failed Pipeline:${currentBuild.fullDisplayName}",body: "Something is wrong with ${env.BUILD_URL}")
     }
     unstable {
       echo 'This will run only if the run was marked as unstable'
