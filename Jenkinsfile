@@ -28,12 +28,30 @@ pipeline {
 
   //Aquí comienzan los “items” del Pipeline
   stages{
-    stage('Checkout') {
+    /* stage('Checkout') {
       steps{
         echo "------------>Checkout<------------"
 		checkout scm
       }
-    }
+    } */
+
+    stage('Checkout'){
+    		steps{
+    			echo "------------>Checkout<------------"
+    			checkout([
+    				$class: 'GitSCM',
+    				branches: [[name: '*/master']],
+    				doGenerateSubmoduleConfigurations: false,
+    				extensions: [],
+    				gitTool: 'Default',
+    				submoduleCfg: [],
+    				userRemoteConfigs: [[
+    					credentialsId: 'GitHub_ingoscarolivo',
+    					url:'https://github.com/ingoscarolivo/BookStoreCeiba'
+    				]]
+    			])
+    		}
+    	}
     
     stage('Compile & Unit Tests') {
       steps{
