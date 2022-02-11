@@ -53,13 +53,13 @@ pipeline {
       }
     } */
 
-     stage('Static Code Analysis') {
-        steps{
-            sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:ceiba.bookstore.oscar.olivo',
-            sonarName:'CeibaADN-CeibaBookStore(oscar.olivo)',
-            sonarPathProperties:'./sonar-project.properties')
-        }
+stage('Static Code Analysis') {
+    steps{
+        sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:[bookstore.ceibabookstore-oscar.olivo]',
+        sonarName:'CeibaADN-CeibaBookStore(oscar.olivo)',
+        sonarPathProperties:'./sonar-project.properties')
     }
+}
 
 
 
