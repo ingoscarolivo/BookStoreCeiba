@@ -44,7 +44,7 @@ pipeline {
       }
     }
 
-  /*   stage('Static Code Analysis') {
+     stage('Static Code Analysis') {
       steps{
         echo '------------>Análisis de código estático<------------'
 		withSonarQubeEnv('Sonar') {
@@ -52,15 +52,15 @@ pipeline {
 			}
 
       }
-    } */
+    }
 
-stage('Static Code Analysis') {
+/* stage('Static Code Analysis') {
     steps{
         sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:bookstore.ceibabookstore-oscar.olivo',
         sonarName:'CeibaADN-CeibaBookStore-oscar.olivo',
         sonarPathProperties:'./sonar-project.properties')
     }
-}
+} */
 
 
 
