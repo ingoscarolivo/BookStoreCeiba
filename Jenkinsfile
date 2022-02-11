@@ -1,6 +1,4 @@
-@Library('ceiba-jenkins-library') _
 pipeline {
-
   //Donde se va a ejecutar el Pipeline
   agent {
     label 'Slave_Induccion'
@@ -30,50 +28,38 @@ pipeline {
   //Aquí comienzan los “items” del Pipeline
   stages{
     stage('Checkout') {
-          steps{
-            echo "------------>Checkout<------------"
-            checkout scm
-          }
+      steps{
+        echo "------------>Checkout<------------"
+		checkout scm
+      }
     }
-
- //Gradle
- stage('Compile & Unit Tests') {
-        steps{
-             echo "------------>compile & Unit Tests<------------"
-             	sh 'chmod +x ./microservicio/gradlew'
-             		sh './microservicio/gradlew --b ./microservicio/build.gradle clean'
-             		sh './microservicio/gradlew --b ./microservicio/build.gradle test'
-        }
- }
-
-
-
-/* stage('Static Code Analysis') {
-    steps{
-        	sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:ceibabookstore.oscar.olivo',
-        sonarName:'CeibaADN-CeibaBookStore(oscar.olivo)',
-        sonarPathProperties:'./sonar-project.properties')
+    
+    stage('Compile & Unit Tests') {
+      steps{
+        echo "------------>Compile & Unit Tests<------------"
+		sh 'chmod +x ./microservicio/gradlew'
+		sh './microservicio/gradlew --b ./microservicio/build.gradle clean'
+		sh './microservicio/gradlew --b ./microservicio/build.gradle test'
+      }
     }
-} */
 
     stage('Static Code Analysis') {
-		steps{
-			echo '------------>Análisis de código estático<------------'
-			withSonarQubeEnv('Sonar') {
+      steps{
+        echo '------------>Análisis de código estático<------------'
+		withSonarQubeEnv('Sonar') {
 				sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner"
 			}
-		}
+
+      }
     }
 
-
- stage('Build') {
-     steps{
-         echo "------------>Build<------------"
-         //Construir sin tarea test que se ejecutó previamente
-         sh './microservicio/gradlew --b ./microservicio/build.gradle build -x test'
-     }
- }
-
+    stage('Build') {
+      steps {
+        echo "------------>Build<------------"
+		// Construir sin test
+		sh './microservicio/gradlew --b ./microservicio/build.gradle build -x test'
+      }
+    }  
   }
 
   post {
@@ -81,12 +67,12 @@ pipeline {
       echo 'This will always run'
     }
     success {
-     echo 'This will run only if successful'
-     junit 'build/test-results/test/*.xml' //RUTA RELATIVA DE LOS ARCHIVOS .XML
+      echo 'This will run only if successful'
+	  junit '**/test-results/test/*.xml'  //RUTA DE LOS ARCHIVOS .XML
     }
     failure {
-     echo 'This will run only if failed'
-     mail (to: 'yuliana.canas@ceiba.com.co',subject: "Failed Pipeline:${currentBuild.fullDisplayName}",body: "Something is wrong with ${env.BUILD_URL}")
+      echo 'This will run only if failed'
+	  mail (to: 'oscar.olivo@ceiba.com.co',subject: "Failed Pipeline:${currentBuild.fullDisplayName}",body: "Something is wrong with ${env.BUILD_URL}")
     }
     unstable {
       echo 'This will run only if the run was marked as unstable'
