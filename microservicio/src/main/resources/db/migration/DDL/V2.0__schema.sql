@@ -11,8 +11,8 @@ CREATE TABLE if not EXISTS venta (
 id int(13) NOT NULL auto_increment,
 idLibro int(13) NOT NULL,
 idUsuario int(11) NOT NULL,
-unidad_Venta INT NOT NULL DEFAULT 0,
-precio_Unidad FLOAT DEFAULT 0,
-precio_Venta FLOAT DEFAULT 0,
-fecha_Venta datetime null,
+unidad_venta INT NOT NULL DEFAULT 0,
+precio_unidad FLOAT DEFAULT 0,
+precio_venta FLOAT DEFAULT 0,
+fecha_venta datetime null,
 PRIMARY KEY (id));

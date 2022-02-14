@@ -1,35 +1,34 @@
-package com.ceiba.libro.puerto.repositorio;
+package com.ceiba.venta.puerto.repositorio;
 
-import com.ceiba.libro.modelo.entidad.Libro;
-import com.ceiba.usuario.modelo.entidad.Usuario;
+import com.ceiba.venta.modelo.entidad.Venta;
 
-public interface RepositorioLibro {
+public interface RepositorioVenta {
     /**
-     * Permite crear un usuario
-     * @param libro
+     * Permite crear una venta
+     * @param venta
      * @return el id generado
      */
-    Long crear(Libro libro);
+    Long crear(Venta venta);
 
     /**
-     * Permite actualizar un usuario
-     * @param libro
-     */
-    void actualizar(Libro libro);
+     * Permite actualizar un venta
+     * @param venta
+     *//*
+    void actualizar(Venta venta);
 
-    /**
-     * Permite eliminar un usuario
+    *//**
+     * Permite eliminar una venta
      * @param id
-     */
+     *//*
     void eliminar(Long id);
 
-    /**
+    *//**
      * Permite validar si existe un usuario con un nombre
      * @param titulo
      * @return si existe o no
-     */
+     *//*
     boolean existe(String titulo);
-
+*/
     /**
      * Permite validar si existe un usuario con un nombre excluyendo un id
      * @return si existe o no

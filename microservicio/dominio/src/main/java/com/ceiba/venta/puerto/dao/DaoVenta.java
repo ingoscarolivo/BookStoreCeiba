@@ -1,14 +1,14 @@
-package com.ceiba.libro.puerto.dao;
+package com.ceiba.venta.puerto.dao;
 
-import com.ceiba.libro.modelo.dto.DtoLibro;
+import com.ceiba.venta.modelo.dto.DtoVenta;
 
 import java.util.List;
 
-public interface DaoLibro {
+public interface DaoVenta {
 
     /**
-     * Permite listar usuarios
-     * @return los usuarios
+     * Permite listar ventas
+     * @return las ventas
      */
-    List<DtoLibro> listarLibro();
+    List<DtoVenta> listar();
 }

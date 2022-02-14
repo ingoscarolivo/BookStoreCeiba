@@ -1,2 +1,2 @@
-select id,nombre,clave,fecha_creacion
-from usuario
+select id, idLibro, idUsuario, unidad_Venta, precio_Unidad, precio_Venta, fecha_Venta
+from venta

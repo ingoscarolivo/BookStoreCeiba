@@ -1,38 +1,42 @@
-package com.ceiba.libro.modelo.entidad;
+package com.ceiba.venta.modelo.entidad;
 
 
 import lombok.Getter;
 
 import java.time.LocalDateTime;
 
-import static com.ceiba.dominio.ValidadorArgumento.validarLongitud;
 import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
 
 @Getter
-public class Libro {
+public class Venta {
 
-    private static final String SE_DEBE_INGRESAR_LA_FECHA_CREACION = "Se debe ingresar la fecha de creación";
-    private static final String LA_CLAVE_DEBE_TENER_UNA_LONGITUD_MAYOR_O_IGUAL_A = "La clave debe tener una longitud mayor o igual a %s";
-    private static final String SE_DEBE_INGRESAR_LA_CLAVE = "Se debe ingresar la clave";
-    private static final String SE_DEBE_INGRESAR_EL_NOMBRE_DE_USUARIO = "Se debe ingresar el nombre de usuario";
 
-    private static final int LONGITUD_MINIMA_CLAVE = 4;
+    private static final String SE_DEBE_INGRESAR_EL_ID_LIBRO = "Se debe ingresar el id del libro a comprar";
+    private static final String SE_DEBE_INGRESAR_EL_ID_DEL_USUARIO = "Se debe ingresar el id del usuario";
+    private static final String SE_DEBE_INGRESAR_CANTIDAD_LIBROS = "Se debe ingresar la cantidad de libros a comprar";
+    private static final String SE_DEBE_INGRESAR_LA_FECHA_VENTA = "Se debe ingresar la fecha de venta";
 
     private Long id;
-    private String titulo;
-    private Long unidades;
-    private Float precio;
+    private Long idLibro;
+    private Long idUsuario;
+    private Long unidadVenta;
+    private Float precioUnidad;
+    private Float precioVenta;
+    private LocalDateTime fechaVenta;
 
-    public Libro(Long id,String titulo, Long unidades,Float precio) {
-        validarObligatorio(titulo, SE_DEBE_INGRESAR_EL_NOMBRE_DE_USUARIO);
-        validarObligatorio(unidades, SE_DEBE_INGRESAR_LA_CLAVE);
-        //validarLongitud(clave, LONGITUD_MINIMA_CLAVE, String.format(LA_CLAVE_DEBE_TENER_UNA_LONGITUD_MAYOR_O_IGUAL_A,LONGITUD_MINIMA_CLAVE));
-        validarObligatorio(unidades, SE_DEBE_INGRESAR_LA_FECHA_CREACION);
+    public Venta(Long id, Long idLibro, Long idUsuario, Long unidadVenta, Float precioUnidad, Float precioVenta, LocalDateTime fechaVenta ) {
+        validarObligatorio(idLibro, SE_DEBE_INGRESAR_EL_ID_LIBRO);
+        validarObligatorio(idUsuario, SE_DEBE_INGRESAR_EL_ID_DEL_USUARIO);
+        validarObligatorio(unidadVenta, SE_DEBE_INGRESAR_CANTIDAD_LIBROS);
+        validarObligatorio(fechaVenta, SE_DEBE_INGRESAR_LA_FECHA_VENTA);
 
         this.id = id;
-        this.titulo = titulo;
-        this.unidades = unidades;
-        this.precio = precio;
+        this.idLibro = idLibro;
+        this.idUsuario = idUsuario;
+        this.unidadVenta = unidadVenta;
+        this.precioUnidad = precioUnidad;
+        this.precioVenta = precioVenta;
+        this.fechaVenta = fechaVenta;
     }
 
 }

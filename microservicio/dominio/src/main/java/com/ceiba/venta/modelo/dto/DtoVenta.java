@@ -1,4 +1,4 @@
-package com.ceiba.libro.modelo.dto;
+package com.ceiba.venta.modelo.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,10 +7,12 @@ import java.time.LocalDateTime;
 
 @Getter
 @AllArgsConstructor
-public class DtoLibro {
+public class DtoVenta {
     private Long id;
-    private String titulo;
-    private Long unidades;
-    private Float precio;
-
+    private Long idLibro;
+    private Long idUsuario;
+    private Long unidadVenta;
+    private Float precioUnidad;
+    private Float precioVenta;
+    private LocalDateTime fechaVenta;
 }

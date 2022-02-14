@@ -1,19 +1,21 @@
-package com.ceiba.usuario.comando.fabrica;
+package com.ceiba.venta.comando.fabrica;
 
-import com.ceiba.usuario.modelo.entidad.Usuario;
+import com.ceiba.venta.comando.ComandoVenta;
+import com.ceiba.venta.modelo.entidad.Venta;
 import org.springframework.stereotype.Component;
 
-import com.ceiba.usuario.comando.ComandoUsuario;
-
 @Component
-public class FabricaUsuario {
+public class FabricaVenta {
 
-    public Usuario crear(ComandoUsuario comandoUsuario) {
-        return new Usuario(
-                comandoUsuario.getId(),
-                comandoUsuario.getNombre(),
-                comandoUsuario.getClave(),
-                comandoUsuario.getFecha()
+    public Venta crear(ComandoVenta comandoVenta) {
+        return new Venta(
+                comandoVenta.getId(),
+                comandoVenta.getIdLibro(),
+                comandoVenta.getIdUsuario(),
+                comandoVenta.getUnidadVenta(),
+                comandoVenta.getPrecioUnidad(),
+                comandoVenta.getPrecioVenta(),
+                comandoVenta.getFechaVenta()
         );
     }
 
