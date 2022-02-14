@@ -2,8 +2,6 @@ package com.ceiba.libro.controlador;
 
 import com.ceiba.libro.consulta.ManejadorListarLibros;
 import com.ceiba.libro.modelo.dto.DtoLibro;
-import com.ceiba.usuario.consulta.ManejadorListarUsuarios;
-import com.ceiba.usuario.modelo.dto.DtoUsuario;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
