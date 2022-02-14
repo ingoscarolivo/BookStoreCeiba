@@ -1,7 +1,6 @@
 package com.ceiba.libro.servicio.testdatabuilder;
 
 import com.ceiba.libro.modelo.entidad.Libro;
-import com.ceiba.usuario.modelo.entidad.Usuario;
 
 
 public class LibroTestDataBuilder {

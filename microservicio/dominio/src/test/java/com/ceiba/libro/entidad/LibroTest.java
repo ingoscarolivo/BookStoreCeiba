@@ -1,7 +1,6 @@
 package com.ceiba.libro.entidad;
 
 import com.ceiba.BasePrueba;
-import com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
 import com.ceiba.libro.modelo.entidad.Libro;
 import com.ceiba.libro.servicio.testdatabuilder.LibroTestDataBuilder;
@@ -9,7 +8,6 @@ import com.ceiba.libro.servicio.testdatabuilder.LibroTestDataBuilder;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
