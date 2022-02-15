@@ -47,8 +47,8 @@ public class BeanServicio {
     }
 
     @Bean
-    public ServicioCrearVenta servicioCrearVenta(RepositorioVenta repositorioVenta) {
-        return new ServicioCrearVenta(repositorioVenta);
+    public ServicioCrearVenta servicioCrearVenta(RepositorioVenta repositorioVenta, RepositorioLibro repositorioLibro, RepositorioUsuario repositorioUsuario, ServicioActualizarLibro servicioActualizarLibro ) {
+        return new ServicioCrearVenta(repositorioVenta, repositorioLibro, repositorioUsuario, servicioActualizarLibro);
     }
 
 }

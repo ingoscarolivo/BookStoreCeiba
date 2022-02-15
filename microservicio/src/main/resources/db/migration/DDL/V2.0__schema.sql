@@ -14,5 +14,6 @@ idUsuario int(11) NOT NULL,
 unidad_venta INT NOT NULL DEFAULT 0,
 precio_unidad FLOAT DEFAULT 0,
 precio_venta FLOAT DEFAULT 0,
+detalle_venta VARCHAR(50) NOT NULL,
 fecha_venta datetime null,
 PRIMARY KEY (id));

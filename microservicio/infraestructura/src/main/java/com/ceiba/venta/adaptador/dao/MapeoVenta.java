@@ -20,9 +20,10 @@ public class MapeoVenta implements RowMapper<DtoVenta>, MapperResult {
         Long unidadVenta = resultSet.getLong("unidad_Venta");
         Float precioUnidad = resultSet.getFloat("precio_Unidad");
         Float precioVenta = resultSet.getFloat("precio_Venta");
+        String detalleVenta = resultSet.getString("detalle_Venta");
         LocalDateTime fechaVenta = extraerLocalDateTime(resultSet, "fecha_Venta");
 
-        return new DtoVenta(id,idLibro,idUsuario,unidadVenta, precioUnidad,precioVenta,fechaVenta);
+        return new DtoVenta(id,idLibro,idUsuario,unidadVenta, precioUnidad,precioVenta,detalleVenta,fechaVenta);
     }
 
 }

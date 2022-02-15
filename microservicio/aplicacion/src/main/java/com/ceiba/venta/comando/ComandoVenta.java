@@ -19,6 +19,7 @@ public class ComandoVenta {
     private Long unidadVenta;
     private Float precioUnidad;
     private Float precioVenta;
+    private String detalleVenta;
     private LocalDateTime fechaVenta;
 }
 

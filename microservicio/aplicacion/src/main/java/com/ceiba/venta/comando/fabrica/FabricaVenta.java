@@ -15,6 +15,7 @@ public class FabricaVenta {
                 comandoVenta.getUnidadVenta(),
                 comandoVenta.getPrecioUnidad(),
                 comandoVenta.getPrecioVenta(),
+                comandoVenta.getDetalleVenta(),
                 comandoVenta.getFechaVenta()
         );
     }
