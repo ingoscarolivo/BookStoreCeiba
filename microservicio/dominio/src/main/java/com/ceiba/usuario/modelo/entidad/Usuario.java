@@ -1,36 +1,34 @@
 package com.ceiba.usuario.modelo.entidad;
 
 
+import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import java.util.regex.Pattern;
 
-import static com.ceiba.dominio.ValidadorArgumento.validarLongitud;
-import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
+import static com.ceiba.dominio.ValidadorArgumento.*;
 
 @Getter
 public class Usuario {
 
-    private static final String SE_DEBE_INGRESAR_LA_FECHA_CREACION = "Se debe ingresar la fecha de creación";
-    private static final String LA_CLAVE_DEBE_TENER_UNA_LONGITUD_MAYOR_O_IGUAL_A = "La clave debe tener una longitud mayor o igual a %s";
-    private static final String SE_DEBE_INGRESAR_LA_CLAVE = "Se debe ingresar la clave";
+    private static final String SE_DEBE_INGRESAR_UN_EMAIL = "Se debe ingresar un email";
     private static final String SE_DEBE_INGRESAR_EL_NOMBRE_DE_USUARIO = "Se debe ingresar el nombre de usuario";
-
-    private static final int LONGITUD_MINIMA_CLAVE = 4;
+    private static final String EL_EMAIL_NO_ES_VALIDO = "El email no es valido";
+    Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 
     private Long id;
     private String nombre;
-    private String clave;
+    private String email;
     private LocalDateTime fechaCreacion;
 
-    public Usuario(Long id,String nombre, String clave,LocalDateTime fechaCreacion) {
+    public Usuario(Long id,String nombre, String email,LocalDateTime fechaCreacion) {
         validarObligatorio(nombre, SE_DEBE_INGRESAR_EL_NOMBRE_DE_USUARIO);
-        validarObligatorio(clave, SE_DEBE_INGRESAR_LA_CLAVE);
-        validarLongitud(clave, LONGITUD_MINIMA_CLAVE, String.format(LA_CLAVE_DEBE_TENER_UNA_LONGITUD_MAYOR_O_IGUAL_A,LONGITUD_MINIMA_CLAVE));
-
+        validarObligatorio(email, SE_DEBE_INGRESAR_UN_EMAIL);
+        validarRegex(email, String.valueOf(pattern),EL_EMAIL_NO_ES_VALIDO);
         this.id = id;
         this.nombre = nombre;
-        this.clave = clave;
+        this.email = email;
         this.fechaCreacion = fechaCreacion;
     }
 

@@ -32,6 +32,7 @@ public class ServicioCrearVenta {
     }
 
 
+
     public Long ejecutar(Venta venta) {
         validarExistenciaPreviaUsuario(venta.getIdUsuario());
         validarExistenciaPreviaLibro(venta.getIdLibro());
@@ -45,8 +46,8 @@ public class ServicioCrearVenta {
 
         LocalDateTime fechaVenta = LocalDateTime.now();
         LocalTime time = fechaVenta.toLocalTime();
-        LocalTime horaInicialOferta = LocalTime.parse("18:00:00.000");
-        LocalTime horaFinalOferta = LocalTime.parse("18:50:00.000");
+        LocalTime horaInicialOferta = LocalTime.parse("22:00:00.000");
+        LocalTime horaFinalOferta = LocalTime.parse("08:00:00.000");
         Boolean cumplePrecio = precioLibroOferta(precio);
         Boolean diaOferta = validarDiasOferta(fechaVenta);
         venta.setDetalleVenta(aplicarOferta(unidadVenta, time, horaInicialOferta,
@@ -72,7 +73,7 @@ public class ServicioCrearVenta {
     }
 
     private boolean aplicarOferta(Long unidadVenta, LocalTime time, LocalTime horaInicialOferta, LocalTime horaFinalOferta) {
-           if ((unidadVenta>=2) && (horaInicialOferta.isBefore(time)) && (horaFinalOferta.isAfter(time))){
+           if ((unidadVenta>=2) && (horaInicialOferta.isBefore(time)) && (time.isAfter(horaFinalOferta))){
             return true;
         }
         return false;

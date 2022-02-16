@@ -1,6 +1,7 @@
 package com.ceiba.usuario.entidad;
 
 import com.ceiba.BasePrueba;
+import com.ceiba.dominio.ValidadorArgumento;
 import com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
 import com.ceiba.usuario.modelo.entidad.Usuario;
@@ -9,6 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+import java.util.regex.Pattern;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -24,7 +26,7 @@ public class UsuarioTest {
         //assert
         assertEquals(1, usuario.getId());
         assertEquals("1234", usuario.getNombre());
-        assertEquals("1234", usuario.getClave());
+        assertEquals("test@gmail.com", usuario.getEmail());
         assertEquals(fechaCreacion, usuario.getFechaCreacion());
     }
 
@@ -41,27 +43,15 @@ public class UsuarioTest {
     }
 
     @Test
-    void deberiaFallarSinClave() {
+    void deberiaFallarSinEmail() {
 
         //Arrange
-        UsuarioTestDataBuilder usuarioTestDataBuilder = new UsuarioTestDataBuilder().conClave(null).conId(1L);
+        UsuarioTestDataBuilder usuarioTestDataBuilder = new UsuarioTestDataBuilder().conEmail(null).conId(1L);
         //act-assert
         BasePrueba.assertThrows(() -> {
                     usuarioTestDataBuilder.build();
                 },
-                ExcepcionValorObligatorio.class, "Se debe ingresar la clave");
-    }
-
-    @Test
-    void deberiaFallarSinTamanioClave() {
-
-        //Arrange
-        UsuarioTestDataBuilder usuarioTestDataBuilder = new UsuarioTestDataBuilder().conClave("123").conId(1L);
-        //act-assert
-        BasePrueba.assertThrows(() -> {
-                    usuarioTestDataBuilder.build();
-                },
-                ExcepcionLongitudValor.class, "La clave debe tener una longitud mayor o igual a 4");
+                ExcepcionValorObligatorio.class, "Se debe ingresar un email");
     }
 
 }

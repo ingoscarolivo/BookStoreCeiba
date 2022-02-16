@@ -8,17 +8,17 @@ public class UsuarioTestDataBuilder {
 
     private Long id;
     private String nombreUsuario;
-    private String clave;
+    private String email;
     private LocalDateTime fechaCreacion;
 
     public UsuarioTestDataBuilder() {
         nombreUsuario = "1234";
-        clave = "1234";
+        email = "test@gmail.com";
         fechaCreacion = LocalDateTime.now();
     }
 
-    public UsuarioTestDataBuilder conClave(String clave) {
-        this.clave = clave;
+    public UsuarioTestDataBuilder conEmail(String email) {
+        this.email = email;
         return this;
     }
 
@@ -38,6 +38,6 @@ public class UsuarioTestDataBuilder {
     }
 
     public Usuario build() {
-        return new Usuario(id,nombreUsuario, clave,fechaCreacion);
+        return new Usuario(id,nombreUsuario, email,fechaCreacion);
     }
 }
