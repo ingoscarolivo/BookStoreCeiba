@@ -2,6 +2,7 @@ package com.ceiba.venta.servicio;
 
 import com.ceiba.BasePrueba;
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
+import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.libro.modelo.entidad.Libro;
 import com.ceiba.libro.puerto.repositorio.RepositorioLibro;
 import com.ceiba.libro.servicio.ServicioActualizarLibro;
@@ -25,12 +26,26 @@ public class ServicioCrearVentaTest {
     @DisplayName("Deberia lanzar una exepcion cuando se valide la existencia del libro")
     void deberiaLanzarUnaExepcionCuandoSeValideLaExistenciaDelLibro() {
         // arrange
-        Libro libro = new LibroTestDataBuilder().build();
+        RepositorioVenta repositorioVenta = Mockito.mock(RepositorioVenta.class);
         RepositorioLibro repositorioLibro = Mockito.mock(RepositorioLibro.class);
-        Mockito.when(repositorioLibro.existe(Mockito.anyString())).thenReturn(true);
-        ServicioCrearLibro servicioCrearLibro = new ServicioCrearLibro(repositorioLibro);
+        RepositorioUsuario repositorioUsuario = Mockito.mock(RepositorioUsuario.class);
+        ServicioActualizarLibro servicioActualizarLibro = Mockito.mock(ServicioActualizarLibro.class);
+        ServicioCrearVenta servicioCrearVenta =  spy(new ServicioCrearVenta(repositorioVenta, repositorioLibro, repositorioUsuario, servicioActualizarLibro));
         // act - assert
-        BasePrueba.assertThrows(() -> servicioCrearLibro.ejecutar(libro), ExcepcionDuplicidad.class,"El libro ya existe en el sistema");
+        BasePrueba.assertThrows(() -> servicioCrearVenta.validarExistenciaPreviaLibro(1L), ExcepcionValorInvalido.class,"El libro no existe en el sistema");
+    }
+
+    @Test
+    @DisplayName("Deberia lanzar una exepcion cuando se valide la existencia del usuario")
+    void deberiaLanzarUnaExepcionCuandoSeValideLaExistenciaDelUsuario() {
+        // arrange
+        RepositorioVenta repositorioVenta = Mockito.mock(RepositorioVenta.class);
+        RepositorioLibro repositorioLibro = Mockito.mock(RepositorioLibro.class);
+        RepositorioUsuario repositorioUsuario = Mockito.mock(RepositorioUsuario.class);
+        ServicioActualizarLibro servicioActualizarLibro = Mockito.mock(ServicioActualizarLibro.class);
+        ServicioCrearVenta servicioCrearVenta =  spy(new ServicioCrearVenta(repositorioVenta, repositorioLibro, repositorioUsuario, servicioActualizarLibro));
+        // act - assert
+        BasePrueba.assertThrows(() -> servicioCrearVenta.validarExistenciaPreviaUsuario(1L), ExcepcionValorInvalido.class,"El usuario no existe en el sistema");
     }
 
     @Test

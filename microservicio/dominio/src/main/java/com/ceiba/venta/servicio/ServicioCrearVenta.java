@@ -66,24 +66,15 @@ public class ServicioCrearVenta {
     }
 
      private boolean precioLibroOferta(Float precio) {
-        if (precio<20000){
-            return true;
-        }
-        return false;
+        return precio<20000;
     }
 
     private boolean aplicarOferta(Long unidadVenta, LocalTime time, LocalTime horaInicialOferta, LocalTime horaFinalOferta) {
-           if ((unidadVenta>=2) && (horaInicialOferta.isBefore(time)) && (time.isAfter(horaFinalOferta))){
-            return true;
-        }
-        return false;
+         return ((unidadVenta>=2) && (horaInicialOferta.isBefore(time)) && (time.isAfter(horaFinalOferta)));
     }
 
     private boolean validarDiasOferta(LocalDateTime fechaVenta) {
-        if (!(fechaVenta.getDayOfWeek() == DayOfWeek.SATURDAY || fechaVenta.getDayOfWeek() == DayOfWeek.SUNDAY)) {
-           return true;
-        }
-        return false;
+        return (!(fechaVenta.getDayOfWeek() == DayOfWeek.SATURDAY || fechaVenta.getDayOfWeek() == DayOfWeek.SUNDAY));
     }
 
 
@@ -91,26 +82,21 @@ public class ServicioCrearVenta {
                                           LocalTime horaFinalOferta, Float precio, boolean cumplePrecio, boolean diaOferta){
 
             if(aplicarOferta(unidadVenta, time, horaInicialOferta, horaFinalOferta) && cumplePrecio && diaOferta) {
-                float precioConOferta = ((precio*50)/100)*unidadVenta;
-                return precioConOferta;
+                return ((precio*50)/100)*unidadVenta;
             }
-            float precioSinOferta = precio * unidadVenta;
-            return  precioSinOferta;
+            return  precio * unidadVenta;
     }
 
 
 
-    private void validarExistenciaPreviaLibro(Long idLibro) {
+    public void validarExistenciaPreviaLibro(Long idLibro) {
         boolean existe = this.respositorioLibro.existePorId(idLibro);
         if(!existe) {
             throw new ExcepcionValorInvalido(EL_LIBRO_NO_EXISTE_EN_EL_SISTEMA);
         }
     }
 
-
-
-
-    private void validarExistenciaPreviaUsuario(Long idUsuario) {
+    public void validarExistenciaPreviaUsuario(Long idUsuario) {
         boolean existe = this.repositorioUsuario.existePorId(idUsuario);
         if(!existe) {
             throw new ExcepcionValorInvalido(EL_USUARIO_NO_EXISTE_EN_EL_SISTEMA);
@@ -118,14 +104,12 @@ public class ServicioCrearVenta {
     }
 
     private float obtenerPrecioLibroPorId(Long idLibro) {
-        float precio = this.respositorioLibro.obtenerPrecioLibroPorId(idLibro);
-        return precio;
+        return this.respositorioLibro.obtenerPrecioLibroPorId(idLibro);
     }
 
 
     public Libro obtenerLibroPorId(Long idLibro) {
-        Libro libro = this.respositorioLibro.obtenerLibroPorId(idLibro);
-        return libro;
+        return this.respositorioLibro.obtenerLibroPorId(idLibro);
     }
 
 
