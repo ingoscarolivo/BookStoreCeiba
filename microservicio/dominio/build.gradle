@@ -24,6 +24,7 @@ repositories {
 }
 
 dependencies {
+	implementation 'junit:junit:4.13.1'
 	testImplementation project.ext.springboottest
 	testImplementation project.ext.mockitocore
 	testImplementation project.ext.mockitoinline
