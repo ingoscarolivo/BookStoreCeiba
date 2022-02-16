@@ -19,7 +19,7 @@ public class ServicioEliminarLibro {
     }
 
 
-    private void validarExistenciaPrevia(Long id) {
+    public void validarExistenciaPrevia(Long id) {
         boolean existe = this.repositorioLibro.existePorId(id);
         if(!existe) {
             throw new ExcepcionSinDatos(EL_LIBRO_NO_EXISTE_EN_EL_SISTEMA);
