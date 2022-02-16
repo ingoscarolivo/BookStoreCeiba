@@ -77,6 +77,8 @@ public class ServicioCrearVentaTest {
         assertEquals(servicioCrearVenta.aplicarOferta(2L,horaActualAplica, horaInicial, horaFinal), true);
         assertEquals(servicioCrearVenta.aplicarOferta(3L,horaActualNoAplica, horaInicial, horaFinal), false);
         assertEquals(servicioCrearVenta.aplicarOferta(3L,horaActualAplica, horaInicial, horaFinal), true);
+        assertEquals(servicioCrearVenta.aplicarOferta(1L,horaActualNoAplica, horaInicial, horaFinal), false);
+        assertEquals(servicioCrearVenta.aplicarOferta(1L,horaActualAplica, horaInicial, horaFinal), false);
     }
 
     @Test
