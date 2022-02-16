@@ -44,34 +44,4 @@ class ComandoControladorLibroTest {
                 .andExpect(content().json("{'valor': 1}"));
     }
 
-/*    @Test
-    @DisplayName("Deberia actualizar un libro")
-    void deberiaActualizarUnLibro() throws Exception{
-        // arrange
-        Long id = 1L;
-        ComandoLibro libro = new ComandoLibroTestDataBuilder().build();
-        // act - assert
-        mocMvc.perform(put("/libros/{id}",id)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(libro)))
-                .andExpect(status().isOk());
-    }
-
-    @Test
-    @DisplayName("Deberia eliminar un libro")
-    void deberiaEliminarUnlibro() throws Exception {
-        // arrange
-        Long id = 1L;
-        // act - assert
-        mocMvc.perform(delete("/libros/{id}",id)
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
-
-        mocMvc.perform(get("/libros")
-                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(0)));
-    }*/
-
 }

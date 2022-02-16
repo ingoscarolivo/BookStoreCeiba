@@ -27,21 +27,12 @@ class ConsultaControladorLibroTest {
     @Autowired
     private MockMvc mocMvc;
 
- /*   @Test
-    @DisplayName("Deberia listar libros")
+    @Test
+    @DisplayName("deberia listar libros")
     void deberiaListarLibros() throws Exception {
-        // arrange
-        // act - assert
         mocMvc.perform(get("/libros")
-                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].precio", is(10000)))
-                .andExpect(jsonPath("$[0].unidades", is(40)))
-                .andExpect(jsonPath("$[0].titulo", is("test")))
-                .andExpect(jsonPath("$[0].id", is(1)));
-
-    }*/
-
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
 
 }
