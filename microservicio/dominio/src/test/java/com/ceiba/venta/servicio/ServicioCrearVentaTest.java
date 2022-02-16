@@ -35,6 +35,21 @@ public class ServicioCrearVentaTest {
         BasePrueba.assertThrows(() -> servicioCrearVenta.validarExistenciaPreviaLibro(1L), ExcepcionValorInvalido.class,"El libro no existe en el sistema");
     }
 
+
+    @Test
+    @DisplayName("Deberia lanzar una exepcion cuando se valide inventario del libro")
+    void deberiaLanzarUnaExepcionCuandoSeValideInventarioDelLibro() {
+        // arrange
+        RepositorioVenta repositorioVenta = Mockito.mock(RepositorioVenta.class);
+        RepositorioLibro repositorioLibro = Mockito.mock(RepositorioLibro.class);
+        RepositorioUsuario repositorioUsuario = Mockito.mock(RepositorioUsuario.class);
+        ServicioActualizarLibro servicioActualizarLibro = Mockito.mock(ServicioActualizarLibro.class);
+        ServicioCrearVenta servicioCrearVenta =  spy(new ServicioCrearVenta(repositorioVenta, repositorioLibro, repositorioUsuario, servicioActualizarLibro));
+        // act - assert
+        BasePrueba.assertThrows(() -> servicioCrearVenta.validarInventarioLibro(-1L), ExcepcionValorInvalido.class,"No ha inventario del libro");
+    }
+
+
     @Test
     @DisplayName("Deberia lanzar una exepcion cuando se valide la existencia del usuario")
     void deberiaLanzarUnaExepcionCuandoSeValideLaExistenciaDelUsuario() {

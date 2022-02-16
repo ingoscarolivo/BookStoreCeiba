@@ -65,7 +65,7 @@ public class ServicioCrearVenta {
         }
     }
 
-     private boolean precioLibroOferta(Float precio) {
+    public boolean precioLibroOferta(Float precio) {
         return precio<20000;
     }
 
