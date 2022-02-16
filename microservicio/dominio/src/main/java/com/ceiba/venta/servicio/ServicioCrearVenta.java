@@ -59,7 +59,7 @@ public class ServicioCrearVenta {
         return this.repositorioVenta.crear(venta);
     }
 
-    private void validarInventarioLibro(Long totalLibro) {
+    public void validarInventarioLibro(Long totalLibro) {
         if(totalLibro<0) {
             throw new ExcepcionValorInvalido(NO_HAY_INVENTARIO_LIBRO);
         }
@@ -123,7 +123,7 @@ public class ServicioCrearVenta {
     }
 
 
-    private Libro obtenerLibroPorId(Long idLibro) {
+    public Libro obtenerLibroPorId(Long idLibro) {
         Libro libro = this.respositorioLibro.obtenerLibroPorId(idLibro);
         return libro;
     }

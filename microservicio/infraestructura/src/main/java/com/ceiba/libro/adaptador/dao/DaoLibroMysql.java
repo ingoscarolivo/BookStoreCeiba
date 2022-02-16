@@ -21,7 +21,7 @@ public class DaoLibroMysql implements DaoLibro {
     }
 
     @Override
-    public List<DtoLibro> listarLibro() {
+    public List<DtoLibro> listar() {
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListarLibro, new MapeoLibro());
     }
 

@@ -7,8 +7,8 @@ import java.util.List;
 public interface DaoLibro {
 
     /**
-     * Permite listar usuarios
-     * @return los usuarios
+     * Permite listar libros
+     * @return los libros
      */
-    List<DtoLibro> listarLibro();
+    List<DtoLibro> listar();
 }

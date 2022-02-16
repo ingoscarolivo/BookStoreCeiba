@@ -3,6 +3,7 @@ package com.ceiba.usuario.entidad;
 import com.ceiba.BasePrueba;
 import com.ceiba.dominio.ValidadorArgumento;
 import com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
+import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
 import com.ceiba.usuario.modelo.entidad.Usuario;
 import com.ceiba.usuario.servicio.testdatabuilder.UsuarioTestDataBuilder;
@@ -52,6 +53,18 @@ public class UsuarioTest {
                     usuarioTestDataBuilder.build();
                 },
                 ExcepcionValorObligatorio.class, "Se debe ingresar un email");
+    }
+
+    @Test
+    void deberiaFallarFormatoEmail() {
+
+        //Arrange
+        UsuarioTestDataBuilder usuarioTestDataBuilder = new UsuarioTestDataBuilder().conEmail("abd.com").conId(1L);
+        //act-assert
+        BasePrueba.assertThrows(() -> {
+                    usuarioTestDataBuilder.build();
+                },
+                ExcepcionValorInvalido.class, "El email no es valido");
     }
 
 }

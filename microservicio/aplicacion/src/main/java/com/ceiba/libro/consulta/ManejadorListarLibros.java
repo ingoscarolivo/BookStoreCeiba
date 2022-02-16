@@ -15,5 +15,5 @@ public class ManejadorListarLibros {
         this.daoLibro = daoLibro;
     }
 
-    public List<DtoLibro> ejecutar(){ return this.daoLibro.listarLibro(); }
+    public List<DtoLibro> ejecutar(){ return this.daoLibro.listar(); }
 }
