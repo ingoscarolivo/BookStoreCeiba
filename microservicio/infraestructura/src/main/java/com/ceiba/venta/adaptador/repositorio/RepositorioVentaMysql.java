@@ -17,15 +17,6 @@ public class RepositorioVentaMysql implements RepositorioVenta {
     @SqlStatement(namespace="venta", value="crear")
     private static String sqlCrear;
 
-  /*  @SqlStatement(namespace="usuario", value="actualizar")
-    private static String sqlActualizar;
-
-    @SqlStatement(namespace="usuario", value="eliminar")
-    private static String sqlEliminar;
-
-    @SqlStatement(namespace="usuario", value="existe")
-    private static String sqlExiste;*/
-
     @SqlStatement(namespace="venta", value="existePorId")
     private static String sqlExistePorId;
 
@@ -37,27 +28,6 @@ public class RepositorioVentaMysql implements RepositorioVenta {
     public Long crear(Venta venta) {
         return this.customNamedParameterJdbcTemplate.crear(venta, sqlCrear);
     }
-
-/*    @Override
-    public void eliminar(Long id) {
-        MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("id", id);
-
-        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminar, paramSource);
-    }
-
-    @Override
-    public boolean existe(String nombre) {
-        MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("nombre", nombre);
-
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExiste,paramSource, Boolean.class);
-    }
-
-    @Override
-    public void actualizar(Usuario usuario) {
-        this.customNamedParameterJdbcTemplate.actualizar(usuario, sqlActualizar);
-    }*/
 
     @Override
     public boolean existePorId(Long id) {

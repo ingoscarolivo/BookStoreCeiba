@@ -9,7 +9,6 @@ import com.ceiba.venta.modelo.entidad.Venta;
 import com.ceiba.venta.puerto.repositorio.RepositorioVenta;
 
 import java.time.DayOfWeek;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -19,9 +18,6 @@ public class ServicioCrearVenta {
     private static final String EL_USUARIO_NO_EXISTE_EN_EL_SISTEMA = "El usuario no existe en el sistema";
     private static final String EL_LIBRO_NO_EXISTE_EN_EL_SISTEMA = "El libro no existe en el sistema";
     private static final String NO_HAY_INVENTARIO_LIBRO = "No ha inventario del libro";
-    private static final String REGLA_CANTIDAD_LIBRO_MENOR_A_LA_OFERTA = "La cantidad de libros es menor a la oferta";
-    private static final String REGLA_VALOR_LIBRO_MAYOR_A_LA_OFERTA = "El valor del libro es superior a $20.000";
-    private static final String REGLA_HORA_MAYOR_A_LA_OFERTA = "La hora es mayor a 10:00 PM";
 
     private final RepositorioVenta repositorioVenta;
     private final RepositorioLibro respositorioLibro;

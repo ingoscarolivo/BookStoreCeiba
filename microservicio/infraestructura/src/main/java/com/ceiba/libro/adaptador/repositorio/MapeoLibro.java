@@ -1,7 +1,6 @@
 package com.ceiba.libro.adaptador.repositorio;
 
 import com.ceiba.infraestructura.jdbc.MapperResult;
-import com.ceiba.libro.modelo.dto.DtoLibro;
 import com.ceiba.libro.modelo.entidad.Libro;
 import org.springframework.jdbc.core.RowMapper;
 
