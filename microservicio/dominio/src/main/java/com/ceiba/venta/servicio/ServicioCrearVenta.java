@@ -69,11 +69,11 @@ public class ServicioCrearVenta {
         return precio<20000;
     }
 
-    private boolean aplicarOferta(Long unidadVenta, LocalTime time, LocalTime horaInicialOferta, LocalTime horaFinalOferta) {
+    public boolean aplicarOferta(Long unidadVenta, LocalTime time, LocalTime horaInicialOferta, LocalTime horaFinalOferta) {
          return ((unidadVenta>=2) && (horaInicialOferta.isBefore(time)) && (time.isAfter(horaFinalOferta)));
     }
 
-    private boolean validarDiasOferta(LocalDateTime fechaVenta) {
+    public boolean validarDiasOferta(LocalDateTime fechaVenta) {
         return (!(fechaVenta.getDayOfWeek() == DayOfWeek.SATURDAY || fechaVenta.getDayOfWeek() == DayOfWeek.SUNDAY));
     }
 
