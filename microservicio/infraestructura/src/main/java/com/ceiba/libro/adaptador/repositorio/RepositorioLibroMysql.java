@@ -27,6 +27,12 @@ public class RepositorioLibroMysql implements RepositorioLibro {
     @SqlStatement(namespace="libro", value="existePorId")
     private static String sqlExistePorId;
 
+    @SqlStatement(namespace="libro", value="obtenerPrecioLibroPorId")
+    private static String sqlObtenerPrecioLibroPorId;
+
+    @SqlStatement(namespace="libro", value="obtenerLibroPorId")
+    private static String sqlObtenerLibroPorId;
+
     public RepositorioLibroMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
@@ -64,4 +70,22 @@ public class RepositorioLibroMysql implements RepositorioLibro {
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId,paramSource, Boolean.class);
     }
+
+    @Override
+    public float obtenerPrecioLibroPorId(Long id) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id", id);
+
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlObtenerPrecioLibroPorId,paramSource, Float.class);
+    }
+
+
+    @Override
+    public Libro obtenerLibroPorId(Long id) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id", id);
+
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlObtenerLibroPorId,paramSource, new MapeoLibro());
+    }
+
 }

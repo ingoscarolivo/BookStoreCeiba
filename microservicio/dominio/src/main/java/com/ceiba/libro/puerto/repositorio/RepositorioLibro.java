@@ -35,4 +35,19 @@ public interface RepositorioLibro {
      */
     boolean existePorId(Long id);
 
+
+    /**
+     * Obtener precio por idLibro
+     * @return precio
+     */
+    float obtenerPrecioLibroPorId(Long id);
+
+
+    /**
+     * Obtener precio por idLibro
+     * @return libro
+     */
+    Libro obtenerLibroPorId(Long id);
+
+
 }

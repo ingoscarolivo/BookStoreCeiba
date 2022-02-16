@@ -1,0 +1,1 @@
+select id, titulo, unidades, precio from libro where id = :id

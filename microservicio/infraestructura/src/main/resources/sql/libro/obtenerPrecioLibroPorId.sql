@@ -1,0 +1,1 @@
+select precio from libro where id = :id

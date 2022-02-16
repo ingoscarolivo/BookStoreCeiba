@@ -2,11 +2,13 @@ package com.ceiba.libro.modelo.entidad;
 
 
 import lombok.Getter;
+import lombok.Setter;
 
 
 import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
 
 @Getter
+@Setter
 public class Libro {
 
     private static final String SE_DEBE_INGRESAR_EL_NOMBRE_DEL_LIBRO = "Se debe ingresar el nombre del libro";
