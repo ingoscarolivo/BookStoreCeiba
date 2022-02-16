@@ -64,17 +64,4 @@ public class UsuarioTest {
                 ExcepcionLongitudValor.class, "La clave debe tener una longitud mayor o igual a 4");
     }
 
-    @Test
-    void deberiaFallarSinFechaCreacion() {
-
-        //Arrange
-        UsuarioTestDataBuilder usuarioTestDataBuilder = new UsuarioTestDataBuilder().conFechaCreacion(null).conId(1L);
-        //act-assert
-        BasePrueba.assertThrows(() -> {
-                    usuarioTestDataBuilder.build();
-                },
-                ExcepcionValorObligatorio.class, "Se debe ingresar la fecha de creación");
-    }
-
-
 }
