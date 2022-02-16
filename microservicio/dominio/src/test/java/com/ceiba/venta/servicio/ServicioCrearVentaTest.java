@@ -75,6 +75,8 @@ public class ServicioCrearVentaTest {
         LocalTime horaFinal=LocalTime.parse("08:00:00.000");
         assertEquals(servicioCrearVenta.aplicarOferta(2L,horaActualNoAplica, horaInicial, horaFinal), false);
         assertEquals(servicioCrearVenta.aplicarOferta(2L,horaActualAplica, horaInicial, horaFinal), true);
+        assertEquals(servicioCrearVenta.aplicarOferta(3L,horaActualNoAplica, horaInicial, horaFinal), false);
+        assertEquals(servicioCrearVenta.aplicarOferta(3L,horaActualAplica, horaInicial, horaFinal), true);
     }
 
     @Test
@@ -83,9 +85,11 @@ public class ServicioCrearVentaTest {
         ServicioCrearVenta servicioCrearVenta =  spy(new ServicioCrearVenta(repositorioVenta, repositorioLibro, repositorioUsuario, servicioActualizarLibro));
         // act - assert
         LocalDateTime fecha=LocalDateTime.parse("2022-02-16T11:25");
-        LocalDateTime fechaFinSemana=LocalDateTime.parse("2022-02-19T11:25");
+        LocalDateTime fechaSabado=LocalDateTime.parse("2022-02-19T11:25");
+        LocalDateTime fechaDomingo=LocalDateTime.parse("2022-02-20T11:25");
         assertEquals(servicioCrearVenta.validarDiasOferta(fecha), true);
-        assertEquals(servicioCrearVenta.validarDiasOferta(fechaFinSemana), false);
+        assertEquals(servicioCrearVenta.validarDiasOferta(fechaSabado), false);
+        assertEquals(servicioCrearVenta.validarDiasOferta(fechaDomingo), false);
     }
 
     @Test
