@@ -29,16 +29,12 @@ public class ServicioCrearVenta {
     private static final String DESCRIPCION_SIN_OFERTA = "venta sin descuento";
 
     private final RepositorioVenta repositorioVenta;
-    private final RepositorioLibro respositorioLibro;
-    private final RepositorioUsuario repositorioUsuario;
     private final ServicioActualizarLibro servicioActualizarLibro;
     private final DaoLibro daoLibro;
     private final DaoUsuario daoUsuario;
 
-    public ServicioCrearVenta(RepositorioVenta repositorioVenta, RepositorioLibro respositorioLibro, RepositorioUsuario repositorioUsuario, ServicioActualizarLibro servicioActualizarLibro, DaoLibro daoLibro, DaoUsuario daoUsuario) {
+    public ServicioCrearVenta(RepositorioVenta repositorioVenta, ServicioActualizarLibro servicioActualizarLibro, DaoLibro daoLibro, DaoUsuario daoUsuario) {
         this.repositorioVenta = repositorioVenta;
-        this.respositorioLibro = respositorioLibro;
-        this.repositorioUsuario = repositorioUsuario;
         this.servicioActualizarLibro = servicioActualizarLibro;
         this.daoLibro = daoLibro;
         this.daoUsuario = daoUsuario;
