@@ -9,7 +9,7 @@ import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
 
 @Getter
 @Setter
-public class Libro {
+public class Libro { //NOSONAR
 
     private static final String SE_DEBE_INGRESAR_EL_NOMBRE_DEL_LIBRO = "Se debe ingresar el nombre del libro";
     private static final String SE_DEBE_INGRESAR_LA_CANTIDAD = "Se debe ingresar la cantidad de libros";

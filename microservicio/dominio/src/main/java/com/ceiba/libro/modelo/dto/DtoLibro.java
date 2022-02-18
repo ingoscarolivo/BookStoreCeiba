@@ -6,7 +6,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class DtoLibro {
+public class DtoLibro { //NOSONAR
     private Long id;
     private String titulo;
     private Long unidades;
