@@ -3,8 +3,10 @@ package com.ceiba.venta.servicio;
 import com.ceiba.BasePrueba;
 import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.libro.modelo.entidad.Libro;
+import com.ceiba.libro.puerto.dao.DaoLibro;
 import com.ceiba.libro.puerto.repositorio.RepositorioLibro;
 import com.ceiba.libro.servicio.ServicioActualizarLibro;
+import com.ceiba.usuario.puerto.dao.DaoUsuario;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 import com.ceiba.venta.modelo.entidad.Venta;
 import com.ceiba.venta.puerto.repositorio.RepositorioVenta;
@@ -28,11 +30,13 @@ public class ServicioCrearVentaTest {
     private RepositorioLibro repositorioLibro = Mockito.mock(RepositorioLibro.class);
     private RepositorioUsuario repositorioUsuario = Mockito.mock(RepositorioUsuario.class);
     private ServicioActualizarLibro servicioActualizarLibro = Mockito.mock(ServicioActualizarLibro.class);
+    private DaoLibro daoLibro = Mockito.mock(DaoLibro.class);
+    private DaoUsuario daoUsuario = Mockito.mock(DaoUsuario.class);
 
     @Test
     @DisplayName("Deberia lanzar una exepcion cuando se valide la existencia del libro")
     void deberiaLanzarUnaExepcionCuandoSeValideLaExistenciaDelLibro() {
-        ServicioCrearVenta servicioCrearVenta =  spy(new ServicioCrearVenta(repositorioVenta, repositorioLibro, repositorioUsuario, servicioActualizarLibro));
+        ServicioCrearVenta servicioCrearVenta =  spy(new ServicioCrearVenta(repositorioVenta, repositorioLibro, repositorioUsuario, servicioActualizarLibro, daoLibro, daoUsuario));
         // act - assert
         BasePrueba.assertThrows(() -> servicioCrearVenta.validarExistenciaPreviaLibro(1L), ExcepcionValorInvalido.class,"El libro no existe en el sistema");
     }
@@ -41,7 +45,7 @@ public class ServicioCrearVentaTest {
     @Test
     @DisplayName("Deberia lanzar una exepcion cuando se valide inventario del libro")
     void deberiaLanzarUnaExepcionCuandoSeValideInventarioDelLibro() {
-        ServicioCrearVenta servicioCrearVenta =  spy(new ServicioCrearVenta(repositorioVenta, repositorioLibro, repositorioUsuario, servicioActualizarLibro));
+        ServicioCrearVenta servicioCrearVenta =  spy(new ServicioCrearVenta(repositorioVenta, repositorioLibro, repositorioUsuario, servicioActualizarLibro, daoLibro, daoUsuario));
         // act - assert
         BasePrueba.assertThrows(() -> servicioCrearVenta.validarInventarioLibro(-1L), ExcepcionValorInvalido.class,"No ha inventario del libro");
     }
@@ -50,7 +54,7 @@ public class ServicioCrearVentaTest {
     @Test
     @DisplayName("Deberia lanzar una exepcion cuando se valide la existencia del usuario")
     void deberiaLanzarUnaExepcionCuandoSeValideLaExistenciaDelUsuario() {
-        ServicioCrearVenta servicioCrearVenta =  spy(new ServicioCrearVenta(repositorioVenta, repositorioLibro, repositorioUsuario, servicioActualizarLibro));
+        ServicioCrearVenta servicioCrearVenta =  spy(new ServicioCrearVenta(repositorioVenta, repositorioLibro, repositorioUsuario, servicioActualizarLibro, daoLibro, daoUsuario));
         // act - assert
         BasePrueba.assertThrows(() -> servicioCrearVenta.validarExistenciaPreviaUsuario(1L), ExcepcionValorInvalido.class,"El usuario no existe en el sistema");
     }
@@ -58,7 +62,7 @@ public class ServicioCrearVentaTest {
     @Test
     @DisplayName("Deberia retornar true si el precio del libro es menor o False si el precio del libro es mayor")
     void deberiaRetornarTrueSIPrecioLibroMenorOrFalseSiPrecioLibroMayor() {
-        ServicioCrearVenta servicioCrearVenta =  spy(new ServicioCrearVenta(repositorioVenta, repositorioLibro, repositorioUsuario, servicioActualizarLibro));
+        ServicioCrearVenta servicioCrearVenta =  spy(new ServicioCrearVenta(repositorioVenta, repositorioLibro, repositorioUsuario, servicioActualizarLibro, daoLibro, daoUsuario));
         // act - assert
         assertEquals(servicioCrearVenta.precioLibroOferta(10000F), true);
         assertEquals(servicioCrearVenta.precioLibroOferta(30000F), false);
@@ -67,7 +71,7 @@ public class ServicioCrearVentaTest {
     @Test
     @DisplayName("Deberia retornar true si aplica la condicion cantidad, hora 10PM a 8AM o False si no esta en el rango de la hora")
     void deberiaRetornarTrueSiCantidadRangoHoraOrFalseSiNotieneCantidadMinRangoHora() {
-        ServicioCrearVenta servicioCrearVenta =  spy(new ServicioCrearVenta(repositorioVenta, repositorioLibro, repositorioUsuario, servicioActualizarLibro));
+        ServicioCrearVenta servicioCrearVenta =  spy(new ServicioCrearVenta(repositorioVenta, repositorioLibro, repositorioUsuario, servicioActualizarLibro, daoLibro, daoUsuario));
         // act - assert
         LocalTime horaActualNoAplica=LocalTime.parse("18:00:00.000");
         LocalTime horaActualAplica=LocalTime.parse("23:00:00.000");
@@ -84,7 +88,7 @@ public class ServicioCrearVentaTest {
     @Test
     @DisplayName("Deberia retornar true si aplica fecha oferta o False si no aplica la fecha oferta")
     void deberiaRetornarTrueFechaOfertaAplicaOrFalseSiNoAplicaFechaOferta() {
-        ServicioCrearVenta servicioCrearVenta =  spy(new ServicioCrearVenta(repositorioVenta, repositorioLibro, repositorioUsuario, servicioActualizarLibro));
+        ServicioCrearVenta servicioCrearVenta =  spy(new ServicioCrearVenta(repositorioVenta, repositorioLibro, repositorioUsuario, servicioActualizarLibro, daoLibro, daoUsuario));
         // act - assert
         LocalDateTime fecha=LocalDateTime.parse("2022-02-16T11:25");
         LocalDateTime fechaSabado=LocalDateTime.parse("2022-02-19T11:25");
@@ -99,12 +103,12 @@ public class ServicioCrearVentaTest {
     void deberiaCrearVentaDeManeraCorrecta() {
         // arrange
         Venta venta = new VentaTestDataBuilder().build();
-        Mockito.when(repositorioUsuario.existePorId(1L)).thenReturn(true);
-        Mockito.when(repositorioLibro.existePorId(1L)).thenReturn(true);
+        Mockito.when(daoUsuario.existePorId(1L)).thenReturn(true);
+        Mockito.when(daoLibro.existePorId(1L)).thenReturn(true);
         Libro libro = new Libro(1L,"java",10L,25000F);
         Mockito.when(repositorioVenta.crear(venta)).thenReturn(1L);
-        ServicioCrearVenta servicioCrearVenta =  spy(new ServicioCrearVenta(repositorioVenta, repositorioLibro, repositorioUsuario, servicioActualizarLibro));
-        Mockito.when(repositorioLibro.obtenerLibroPorId(1L)).thenReturn(libro);
+        ServicioCrearVenta servicioCrearVenta =  spy(new ServicioCrearVenta(repositorioVenta, repositorioLibro, repositorioUsuario, servicioActualizarLibro, daoLibro, daoUsuario));
+        Mockito.when(daoLibro.obtenerLibroPorId(1L)).thenReturn(libro);
         // act
         Long idLibro = servicioCrearVenta.ejecutar(venta);
         //- assert
