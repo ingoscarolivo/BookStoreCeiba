@@ -17,8 +17,6 @@ public class RepositorioVentaMysql implements RepositorioVenta {
     @SqlStatement(namespace="venta", value="crear")
     private static String sqlCrear;
 
-    @SqlStatement(namespace="venta", value="existePorId")
-    private static String sqlExistePorId;
 
     public RepositorioVentaMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
@@ -29,11 +27,4 @@ public class RepositorioVentaMysql implements RepositorioVenta {
         return this.customNamedParameterJdbcTemplate.crear(venta, sqlCrear);
     }
 
-    @Override
-    public boolean existePorId(Long id) {
-        MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("id", id);
-
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId,paramSource, Boolean.class);
-    }
 }
