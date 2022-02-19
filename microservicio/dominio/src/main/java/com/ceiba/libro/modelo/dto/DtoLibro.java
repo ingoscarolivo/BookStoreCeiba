@@ -6,10 +6,10 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class DtoLibro { //NOSONAR
-    private Long id;
-    private String titulo;
-    private Long unidades;
-    private Float precio;
+public class DtoLibro {
+    private Long id; //NOSONAR
+    private String titulo; //NOSONAR
+    private Long unidades; //NOSONAR
+    private Float precio; //NOSONAR
 
 }

@@ -17,16 +17,16 @@ public class Venta {
     private static final String SE_DEBE_INGRESAR_EL_ID_DEL_USUARIO = "Se debe ingresar el id del usuario";
     private static final String SE_DEBE_INGRESAR_CANTIDAD_LIBROS = "Se debe ingresar la cantidad de libros a comprar";
 
-    private Long id;
-    private Long idLibro;
-    private Long idUsuario;
-    private Long unidadVenta;
-    private Float precioUnidad;
-    private Float precioVenta;
-    private String detalleVenta;
-    private LocalDateTime fechaVenta;
+    private Long id; //NOSONAR
+    private Long idLibro; //NOSONAR
+    private Long idUsuario; //NOSONAR
+    private Long unidadVenta; //NOSONAR
+    private Float precioUnidad; //NOSONAR
+    private Float precioVenta; //NOSONAR
+    private String detalleVenta; //NOSONAR
+    private LocalDateTime fechaVenta; //NOSONAR
 
-    public Venta(Long id, Long idLibro, Long idUsuario, Long unidadVenta, Float precioUnidad, Float precioVenta, String detalleVenta, LocalDateTime fechaVenta ) {
+    public Venta(Long id, Long idLibro, Long idUsuario, Long unidadVenta, Float precioUnidad, Float precioVenta, String detalleVenta) {
         validarObligatorio(idLibro, SE_DEBE_INGRESAR_EL_ID_LIBRO);
         validarObligatorio(idUsuario, SE_DEBE_INGRESAR_EL_ID_DEL_USUARIO);
         validarObligatorio(unidadVenta, SE_DEBE_INGRESAR_CANTIDAD_LIBROS);

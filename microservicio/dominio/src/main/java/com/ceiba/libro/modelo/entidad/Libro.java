@@ -16,10 +16,10 @@ public class Libro { //NOSONAR
     private static final String SE_DEBE_INGRESAR_EL_PRECIO = "Se debe ingresar el precio del libro";
 
 
-    private Long id;
-    private String titulo;
-    private Long unidades;
-    private Float precio;
+    private Long id; //NOSONAR
+    private String titulo; //NOSONAR
+    private Long unidades; //NOSONAR
+    private Float precio; //NOSONAR
 
     public Libro(Long id,String titulo, Long unidades,Float precio) {
         validarObligatorio(titulo, SE_DEBE_INGRESAR_EL_NOMBRE_DEL_LIBRO);

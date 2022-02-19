@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @AllArgsConstructor
-public class DtoVenta {// NOSONAR
+public class DtoVenta {
     private Long id; //NOSONAR
     private Long idLibro; //NOSONAR
     private Long idUsuario; //NOSONAR

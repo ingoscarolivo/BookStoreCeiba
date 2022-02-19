@@ -68,6 +68,6 @@ public class VentaTestDataBuilder {
 
 
     public Venta build() {
-        return new Venta(id,idLibro, idUsuario,unidadVenta,precioUnidad,precioVenta,detalleVenta, fechaVenta);
+        return new Venta(id,idLibro, idUsuario,unidadVenta,precioUnidad,precioVenta,detalleVenta);
     }
 }

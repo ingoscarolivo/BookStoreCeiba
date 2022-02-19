@@ -7,10 +7,10 @@ import java.time.LocalDateTime;
 
 @Getter
 @AllArgsConstructor
-public class DtoUsuario { //NOSONAR
-    private Long id;
-    private String nombre;
-    private String email;
-    private LocalDateTime fechaCreacion;
+public class DtoUsuario {
+    private Long id; //NOSONAR
+    private String nombre; //NOSONAR
+    private String email; //NOSONAR
+    private LocalDateTime fechaCreacion; //NOSONAR
 
 }
