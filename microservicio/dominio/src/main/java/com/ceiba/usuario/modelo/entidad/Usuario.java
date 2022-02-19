@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 import static com.ceiba.dominio.ValidadorArgumento.*;
 
 @Getter
-public class Usuario {//NOSONAR
+public class Usuario { //NOSONAR
 
     private static final String SE_DEBE_INGRESAR_UN_EMAIL = "Se debe ingresar un email";
     private static final String SE_DEBE_INGRESAR_EL_NOMBRE_DE_USUARIO = "Se debe ingresar el nombre de usuario";

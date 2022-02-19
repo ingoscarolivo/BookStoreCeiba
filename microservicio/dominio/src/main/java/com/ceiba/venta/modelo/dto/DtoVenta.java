@@ -9,11 +9,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class DtoVenta {// NOSONAR
     private Long id; //NOSONAR
-    private Long idLibro;
-    private Long idUsuario;
-    private Long unidadVenta;
-    private Float precioUnidad;
-    private Float precioVenta;
-    private String detalleVenta;
-    private LocalDateTime fechaVenta;
+    private Long idLibro; //NOSONAR
+    private Long idUsuario; //NOSONAR
+    private Long unidadVenta; //NOSONAR
+    private Float precioUnidad; //NOSONAR
+    private Float precioVenta; //NOSONAR
+    private String detalleVenta; //NOSONAR
+    private LocalDateTime fechaVenta; //NOSONAR
 }
