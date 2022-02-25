@@ -20,6 +20,6 @@ public interface RepositorioLibro {
      * Permite eliminar un libro
      * @param id
      */
-    void eliminar(Long id);
+    Integer eliminar(Long id);
 
 }

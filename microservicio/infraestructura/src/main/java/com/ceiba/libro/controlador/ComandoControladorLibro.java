@@ -36,8 +36,8 @@ public class ComandoControladorLibro {
 
     @DeleteMapping(value="/{id}")
 	@ApiOperation("Eliminar Libro")
-	public void eliminar(@PathVariable Long id) {
-		manejadorEliminarLibro.ejecutar(id);
+	public  ComandoRespuesta<Long> eliminar(@PathVariable Long id) {
+		return manejadorEliminarLibro.ejecutar(id);
 	}
 
 	@PutMapping(value="/{id}")

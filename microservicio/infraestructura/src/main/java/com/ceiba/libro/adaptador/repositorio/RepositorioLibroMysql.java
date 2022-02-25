@@ -32,11 +32,11 @@ public class RepositorioLibroMysql implements RepositorioLibro {
     }
 
     @Override
-    public void eliminar(Long id) {
+    public Integer eliminar(Long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
 
-        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminar, paramSource);
+       return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminar, paramSource);
     }
 
 

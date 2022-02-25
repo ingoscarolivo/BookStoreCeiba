@@ -16,9 +16,9 @@ public class ServicioEliminarLibro {
         this.daoLibro = daoLibro;
     }
 
-    public void ejecutar(Long id) {
+    public Integer ejecutar(Long id) {
         validarExistenciaPrevia(id);
-        this.repositorioLibro.eliminar(id);
+       return this.repositorioLibro.eliminar(id);
     }
 
 
